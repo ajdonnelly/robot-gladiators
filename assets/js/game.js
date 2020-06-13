@@ -11,11 +11,10 @@ var enemyHealth = 50;
 var enemyAttack = 12;
 
 var fight = function(enemyName) {
+    while(enemyHealth > 0) {
     var promptFight = window.prompt("Would you like to FIGHT or SKIP this battle? Enter 'FIGHT' or 'SKIP' to choose.");
-    // Alert users that they are starting the round
-    window.alert("Welcome to Robot Gladiators!");
     // if player choses to fight, then fight
-if (promptFight === "fight" || promptFight === "FIGHT") {
+    if (promptFight === "fight" || promptFight === "FIGHT") {
     // remove enemy's health by subtracting the amount set in the playerAttack variable
     enemyHealth = enemyHealth - playerAttack;
     console.log(
@@ -56,9 +55,16 @@ if (promptFight === "fight" || promptFight === "FIGHT") {
     else {
       fight();
     }
+    }
   }
   };    
-
+// starting with i=0, ie. first enemy running through all the array, i = i +1, if the condition is satisfied that i < enemyNames.length. 
+//if no (false), ask question again by running fight() again
   for(var i = 0; i < enemyNames.length; i++) {
-    fight(enemyNames[i]);
-  }
+      // here we declare a new variable, pickedEnemyName and assign it a value of all the enemy names, enemyNames [i]
+      // so that when we run fight we run the function through a while statmenet and through the while statment runs
+      //this variable that makes sure all the array names run through the while that in turn runs through the fight function
+      var pickedEnemyName = enemyNames[i];
+      enemyHealth = 50;
+    fight(pickedEnemyName);
+  };
